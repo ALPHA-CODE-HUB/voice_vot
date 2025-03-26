@@ -25,11 +25,11 @@ import './App.css';
 
 // API configuration
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://voice-bot-api.onrender.com' 
+  ? '' 
   : 'http://localhost';
 const BASE_PORT = process.env.NODE_ENV === 'production' ? '' : '8000';
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? `${API_BASE_URL}` 
+  ? '/api' 
   : `${API_BASE_URL}:${BASE_PORT}`;
 
 // Custom theme with animations and modern colors
