@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Interview Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #2b6cb0;
+            font-size: 2.5rem;
+        }
+        .interview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ebf4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #4299e1;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #3182ce;
+        }
+        .chat-container {
+            width: 100%;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .user-message {
+            background-color: #ebf8ff;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #f0fff4;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>AI Voice Interview Bot</h1>
+            <p>Practice your interview skills with our AI assistant</p>
+        </header>
+        
+        <div class="interview-container">
+            <div class="avatar">AA</div>
+            <h2>Adithya S Arangil</h2>
+            <p>AI/ML Developer</p>
+            
+            <div class="controls">
+                <button id="startBtn">Start Recording</button>
+                <button id="stopBtn" disabled>Stop Recording</button>
+            </div>
+            
+            <div class="chat-container">
+                <div class="message bot-message">
+                    Hello! I'm Adithya, your AI interview assistant. Ask me a question to get started.
+                </div>
+                <div class="message user-message">
+                    Please tell me about your experience with machine learning.
+                </div>
+                <div class="message bot-message">
+                    I have extensive experience in machine learning, particularly in deep learning applications. I've worked on research projects involving malware detection using deep learning techniques, which resulted in a published paper.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('startBtn').addEventListener('click', function() {
+            this.disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            
+            // Add a loading message
+            const chatContainer = document.querySelector('.chat-container');
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message user-message';
+            loadingMessage.textContent = 'Recording... (this is a static demo)';
+            chatContainer.appendChild(loadingMessage);
+        });
+        
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            this.disabled = true;
+            document.getElementById('startBtn').disabled = false;
+            
+            // Add a response message
+            const chatContainer = document.querySelector('.chat-container');
+            const responseMessage = document.createElement('div');
+            responseMessage.className = 'message bot-message';
+            responseMessage.textContent = 'I have experience using TensorFlow, PyTorch, and Keras for implementing various neural network architectures. I particularly enjoy working on computer vision and natural language processing tasks.';
+            chatContainer.appendChild(responseMessage);
+        });
+    </script>
+</body>
+</html>
