@@ -6,22 +6,25 @@
       "use": "@vercel/node"
     },
     {
-      "src": "voice-client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build",
-        "buildCommand": "cd voice-client && npm install && npm run build"
-      }
+      "src": "voice-client/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/index.js"
+      "dest": "index.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*).(js|css|png|jpg|jpeg|gif|ico|json)",
+      "dest": "/voice-client/$1.$2"
     },
     {
       "src": "/(.*)",
-      "dest": "/voice-client/build/$1"
+      "dest": "/voice-client/index.html"
     }
   ],
   "env": {
