@@ -17,6 +17,11 @@ app.use(cors({
 app.use(express.json({ limit: '50mb' }));
 app.use(express.static('public'));
 
+// Serve React build files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'voice-client/build')));
+}
+
 // Simple ping endpoint for the client to check server availability
 app.get('/api/ping', (req, res) => {
   res.status(200).json({ status: 'ok' });
@@ -202,3 +207,12 @@ const startServer = (port) => {
 
 // Start server on the initial port
 startServer(port); 
+
+// Add a catch-all route to serve the React app for any non-API routes
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    // Skip API routes
+    if (req.path.startsWith('/api/')) return;
+    res.sendFile(path.join(__dirname, 'voice-client/build', 'index.html'));
+  });
+} 
