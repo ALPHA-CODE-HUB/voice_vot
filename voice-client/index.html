@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Interview Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        h1 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+        .loading {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .loading div {
+            width: 1rem;
+            height: 1rem;
+            margin: 0 0.5rem;
+            background-color: #2c5282;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading div:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        .loading div:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Voice Interview Bot</h1>
+        <p>Welcome to the AI Voice Interview Bot! This application allows you to practice interviews with an AI assistant.</p>
+        <p>The application is loading...</p>
+        <div class="loading">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        // Check if we're in the build directory
+        const isBuildDir = window.location.pathname.includes('/build/');
+        
+        // If not in the build directory, try to redirect to the React app
+        if (!isBuildDir && window.location.pathname === '/') {
+            setTimeout(() => {
+                window.location.href = '/build/index.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
