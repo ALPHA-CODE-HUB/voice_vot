@@ -24,9 +24,13 @@ import axios from 'axios';
 import './App.css';
 
 // API configuration
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost';
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://voice-bot-api.onrender.com' 
+  : 'http://localhost';
 const BASE_PORT = process.env.NODE_ENV === 'production' ? '' : '8000';
-const API_URL = process.env.NODE_ENV === 'production' ? '/api' : `${API_BASE_URL}:${BASE_PORT}`;
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? `${API_BASE_URL}` 
+  : `${API_BASE_URL}:${BASE_PORT}`;
 
 // Custom theme with animations and modern colors
 const customTheme = extendTheme({
