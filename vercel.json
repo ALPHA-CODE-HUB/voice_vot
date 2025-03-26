@@ -1,13 +1,30 @@
 {
+  "version": 2,
   "builds": [
-    { "src": "index.js", "use": "@vercel/node" },
-    { "src": "voice-client/package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "voice-client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build",
+        "buildCommand": "cd voice-client && npm install && npm run build"
+      }
+    }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "index.js" },
-    { "src": "/(.*)", "dest": "voice-client/build/$1" }
+    {
+      "src": "/api/(.*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/voice-client/build/$1"
+    }
   ],
   "env": {
-    "OPENROUTER_API_KEY": "@openrouter_api_key"
+    "NODE_ENV": "production"
   }
 }
